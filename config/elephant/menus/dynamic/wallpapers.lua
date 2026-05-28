@@ -9,7 +9,7 @@ function SetWallpaper(value)
 	local monitors_handle = io.popen("hyprctl monitors -j | jq -r '.[].name'")
 	if monitors_handle then
 		for monitor in monitors_handle:lines() do
-			os.execute("hyprctl hyprpaper reload '" .. monitor .. "," .. value .. "'")
+			os.execute("hyprctl hyprpaper wallpaper '" .. monitor .. "," .. value .. "'")
 		end
 		monitors_handle:close()
 	end

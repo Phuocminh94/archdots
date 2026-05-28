@@ -44,7 +44,11 @@ else
 
   ln -nsf "$NEW_BACKGROUND" "$CURRENT_BACKGROUND_LINK"
 
+  hyprctl hyprpaper preload "$NEW_BACKGROUND"
+
   hyprctl monitors -j | jq -r '.[].name' | while read -r monitor; do
-    hyprctl hyprpaper reload "$monitor,$NEW_BACKGROUND"
+    # hyprctl hyprpaper reload "$monitor,$NEW_BACKGROUND"
+    hyprctl hyprpaper wallpaper "$monitor,$NEW_BACKGROUND"
+    notify-send "Changing to: $(basename "$NEW_BACKGROUND")"
   done
 fi

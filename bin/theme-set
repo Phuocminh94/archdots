@@ -9,8 +9,10 @@ set_wallpaper() {
   local wallpaper="$1"
   ln -nsf "$wallpaper" "$CURRENT_BACKGROUND_LINK"
 
+  hyprctl hyprpaper preload "$wallpaper"
+
   hyprctl monitors -j | jq -r '.[].name' | while read -r monitor; do
-    hyprctl hyprpaper reload "$monitor,$CURRENT_BACKGROUND_LINK"
+    hyprctl hyprpaper wallpaper "$monitor,$wallpaper"
   done
   log_success "Wallpaper set: $(basename "$wallpaper")"
 }
