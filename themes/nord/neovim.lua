@@ -1,9 +1,8 @@
 return {
-	{ "EdenEast/nightfox.nvim" },
 	{
-		"LazyVim/LazyVim",
-		opts = {
-			colorscheme = "nordfox",
-		},
+		"EdenEast/nightfox.nvim",
+		config = function()
+			vim.cmd([[colorscheme nordfox]])
+		end,
 	},
 }

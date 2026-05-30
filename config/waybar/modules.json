@@ -145,10 +145,11 @@
     "tooltip-format": "Open Filemanager"
   },
   "custom/screenrecord": {
-    "exec": "screenrecord-status",
+    "exec": "if [ -f /tmp/screenrecord-filename ]; then start_ts=$(date -r /tmp/screenrecord-filename +%s 2>/dev/null); current_ts=$(date +%s); elapsed=$((current_ts - start_ts)); printf \"󰑋 %02d:%02d\\n\" $((elapsed / 60)) $((elapsed % 60)); fi",
     "return-type": "json",
     "signal": 8,
     "interval": 1,
-    "on-click": "screenrecord output"
+    "tooltip": false,
+    "on-click": "pkill -SIGINT -f 'gpu-screen-recorder'"
   }
 }

@@ -105,8 +105,8 @@ log_step "[$CURRENT_STEP/$TOTAL_STEPS] Installing zsh plugins"
 bash "$SCRIPT_DIR/setup-zsh"
 
 CURRENT_STEP=$((CURRENT_STEP + 1))
-log_step "[$CURRENT_STEP/$TOTAL_STEPS] Setting up LazyVim"
-bash "$SCRIPT_DIR/setup-lazyvim"
+log_step "[$CURRENT_STEP/$TOTAL_STEPS] Setting up Mvim"
+bash "$SCRIPT_DIR/setup-mvim"
 
 CURRENT_STEP=$((CURRENT_STEP + 1))
 log_step "[$CURRENT_STEP/$TOTAL_STEPS] Copying configuration files"

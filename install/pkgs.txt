@@ -28,8 +28,7 @@ neovim
 visual-studio-code-bin
 
 # Browsers
-helium-browser-bin
-zen-browser-bin
+google-chrome
 
 # Hyprland
 hyprcursor

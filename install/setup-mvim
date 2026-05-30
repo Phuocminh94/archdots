@@ -1,0 +1,29 @@
+#!/bin/bash
+set -e
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+source "$SCRIPT_DIR/lib/helpers.sh"
+source "$SCRIPT_DIR/lib/backup.sh"
+DOTFILES_DIR="$HOME/.local/share/dotfiles"
+
+# Check if Mvim exists
+if [ -d "$HOME/.config/nvim/.git" ]; then
+    log_info "Mvim already exists, updating..."
+    cd "$HOME/.config/nvim"
+    git pull
+else
+    # Backup and clone if not exist
+    if [ -d "$HOME/.config/nvim" ] || [ -L "$HOME/.config/nvim" ]; then
+        log_info "Existing non-git nvim config found, backing up..."
+        backup_file "$HOME/.config/nvim"
+        remove_path "$HOME/.config/nvim"
+    fi
+    
+    log_info "Cloning Mvim..."
+    if ! git clone https://github.com/Phuocminh94/Mvim.git ~/.config/nvim; then
+        log_error "Failed to clone Mvim"
+        exit 1
+    fi
+fi
+
+log_success "Mvim setup finished!"

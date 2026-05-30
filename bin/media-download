@@ -14,7 +14,7 @@ fi
 
 # Validate URL with yt-dlp
 echo
-if ! spinner "Validating URL..." yt-dlp --dump-json --quiet --no-warnings "$url" > /dev/null 2>&1; then
+if ! spinner "Validating URL..." yt-dlp --dump-json --quiet --no-warnings "$url"; then
   log_error "URL not supported or invalid"
   show_done
   exit 1
