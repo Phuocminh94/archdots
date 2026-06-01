@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Github
+Comment=Github
+Exec=/home/mbp/.local/share/dotfiles/bin/launch-webapp "https://github.com/"
+Terminal=false
+Type=Application
+Icon=/home/mbp/.local/share/applications/icons/github.png
+StartupNotify=true

@@ -46,6 +46,7 @@
 
     // Modules Right
     "modules-right": [
+        "custom/music",
         "custom/screenrecord",
         "custom/updates",
         "pulseaudio",

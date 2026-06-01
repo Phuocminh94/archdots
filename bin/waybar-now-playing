@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Check if any media player is currently active
+status=$(playerctl status 2>/dev/null) || exit 0
+
+# Only proceed if a track is currently playing
+[ "$status" = "Playing" ] || exit 0
+
+# Fetch track metadata
+artist=$(playerctl metadata --format '{{xesam:artist}}' 2>/dev/null)
+title=$(playerctl metadata --format '{{xesam:title}}' 2>/dev/null)
+album=$(playerctl metadata --format '{{xesam:album}}' 2>/dev/null)
+
+# Validation: Only exit if BOTH artist and title fields are empty
+if [ -z "$artist" ] && [ -z "$title" ]; then
+    exit 0
+fi
+
+# Fallback to default values if any field is empty to prevent UI formatting issues
+[ -z "$artist" ] && artist="Unknown Artist"
+[ -z "$title" ] && title="Unknown Title"
+[ -z "$album" ] && album="Unknown Album"
+
+# Truncate the song title if it exceeds 50 characters
+if [ ${#title} -gt 50 ]; then
+    short_title="${title:0:47}..."
+else
+    short_title="$title"
+fi
+
+# │  󰇙
+tooltip="<span alpha='72%'>󰠃 Artist</span>   <span alpha='96%'>${artist}</span>\n<span alpha='72%'>󰀥 Album</span>    <span alpha='96%'>${album}</span>\n<span alpha='72%'> Song</span>     <span alpha='96%'>${title}</span>"
+printf '{"text":"  %s 󰇙","tooltip":"%s"}\n' "$short_title" "$tooltip"

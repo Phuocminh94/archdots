@@ -14,6 +14,10 @@ set_wallpaper() {
   hyprctl monitors -j | jq -r '.[].name' | while read -r monitor; do
     hyprctl hyprpaper wallpaper "$monitor,$wallpaper"
   done
+
+  # set sddm background
+  cp -f "$wallpaper" "/usr/share/sddm/themes/mbp/Backgrounds/background"
+
   log_success "Wallpaper set: $(basename "$wallpaper")"
 }
 

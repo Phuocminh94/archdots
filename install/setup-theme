@@ -12,6 +12,16 @@ mkdir -p "$DOTFILES_DIR/current"
 ln -snf "$DOTFILES_DIR/themes/everforest" "$DOTFILES_DIR/current/theme"
 ln -snf "$DOTFILES_DIR/current/theme/backgrounds/1-everforest.jpg" "$DOTFILES_DIR/current/background"
 
+# Set up SDDM
+log_info "Setting up sddm ..."
+SDDM_THEME_SRC="$DOTFILES_DIR/sddm/themes/mbp"
+SDDM_THEME_DEST="/usr/share/sddm/themes/"
+
+if command -v sddm &>/dev/null; then
+  sudo cp -r "$SDDM_THEME_SRC" "$SDDM_THEME_DEST"
+  sudo chown -R $USER:$USER "${SDDM_THEME_DEST}mbp"
+fi
+
 mkdir -p "$HOME/.config/nvim/lua/plugins"
 mkdir -p "$HOME/.config/btop/themes"
 mkdir -p "$HOME/.config/mako"

@@ -35,13 +35,11 @@
     "on-click": "hypridle-toggle toggle"
   },
   "custom/music": {
-    "format": "  {}",
-    "escape": true,
-    "interval": 5,
-    "tooltip": false,
-    "exec": "playerctl metadata --format='{{ title }} - {{artist}}'",
-    "on-click": "playerctl play-pause",
-    "max-length": 50
+    "exec": "waybar-now-playing",
+    "interval": 2,
+    "format": "{text}",
+    "return-type": "json",
+    "tooltip": "{tooltip}"
   },
   "clock": {
     "format": "{:%A %H:%M}",
@@ -85,7 +83,7 @@
     "tooltip-format-disconnected": "Disconnected",
     "interval": 3,
     "spacing": 1,
-    "on-click": "ghostty --class=local.floating -e impala"
+    "on-click": "ghostty --class=local.floating -e $HOME/.cargo/bin/impala-nm"
   },
   "battery": {
     "format": "{capacity}% {icon}",
@@ -145,11 +143,10 @@
     "tooltip-format": "Open Filemanager"
   },
   "custom/screenrecord": {
-    "exec": "if [ -f /tmp/screenrecord-filename ]; then start_ts=$(date -r /tmp/screenrecord-filename +%s 2>/dev/null); current_ts=$(date +%s); elapsed=$((current_ts - start_ts)); printf \"󰑋 %02d:%02d\\n\" $((elapsed / 60)) $((elapsed % 60)); fi",
+    "exec": "screenrecord-status",
     "return-type": "json",
     "signal": 8,
     "interval": 1,
-    "tooltip": false,
-    "on-click": "pkill -SIGINT -f 'gpu-screen-recorder'"
+    "on-click": "screenrecord output"
   }
 }

@@ -84,6 +84,8 @@ get_rectangles() {
 }
 
 start_screenrecording() {
+  # Sleep 0.5-1s to allow the menu to fully close before proceeding
+  sleep 0.5
   local capture_args=()
   
   # SCOPE from Menu
@@ -154,12 +156,18 @@ start_screenrecording() {
 
   if kill -0 $pid 2>/dev/null; then
     echo "$filename" >"$RECORDING_FILE"
+    date +%s > "/tmp/screenrecord-start-time"
     toggle_screenrecording_indicator
     notify-send "Screen Recorder" "Recording video..." -t 2000
   fi
 }
 
 stop_screenrecording() {
+  # Remove counting time file and restart Waybar immediately when click
+  rm -f "/tmp/screenrecord-start-time"
+  toggle_screenrecording_indicator
+
+  # Stop immediately
   pkill -SIGINT -f "^gpu-screen-recorder"
 
   local count=0
@@ -168,27 +176,31 @@ stop_screenrecording() {
     count=$((count + 1))
   done
 
-  toggle_screenrecording_indicator
   cleanup_webcam
+  local filename=$(cat "$RECORDING_FILE" 2>/dev/null)
 
   if pgrep -f "^gpu-screen-recorder" >/dev/null; then
     pkill -9 -f "^gpu-screen-recorder"
     notify-send "Screen Recording Error" "Process hung. Force-closing the recording!" -u critical -t 5000
+    rm -f "$RECORDING_FILE"
   else
-    finalize_recording
-    local filename=$(cat "$RECORDING_FILE" 2>/dev/null)
-    local preview="${filename%.mp4}-preview.png"
-
-    ffmpeg -y -i "$filename" -ss 00:00:00.1 -vframes 1 -q:v 2 "$preview" -loglevel quiet 2>/dev/null
-
     (
-      ACTION=$(notify-send "Screen Recording Saved" "Click here to play the recording instantly" -t 8000 -i "${preview:-$filename}" -A "default=open")
-      [[ $ACTION == "default" ]] && mpv "$filename"
-      rm -f "$preview"
+      finalize_recording
+      
+      if [[ -f "$filename" ]]; then
+        local preview="${filename%.mp4}-preview.png"
+        ffmpeg -y -i "$filename" -ss 00:00:00.1 -vframes 1 -q:v 2 "$preview" -loglevel quiet 2>/dev/null
+
+        ACTION=$(notify-send "Screen Recording Saved" "Click here to play the recording instantly" -t 8000 -i "${preview:-$filename}" -A "default=open")
+        [[ $ACTION == "default" ]] && mpv "$filename"
+        
+        rm -f "$preview"
+      fi
+      
+      # Remove tracking video
+      rm -f "$RECORDING_FILE"
     ) &
   fi
-
-  rm -f "$RECORDING_FILE"
 }
 
 toggle_screenrecording_indicator() {

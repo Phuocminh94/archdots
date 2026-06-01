@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Gemini
+Comment=Gemini
+Exec=~/.local/share/dotfiles/bin/launch-webapp https://gemini.google.com/app
+Terminal=false
+Type=Application
+Icon=/home/mbp/.local/share/applications/icons/Gemini.png
+StartupNotify=true

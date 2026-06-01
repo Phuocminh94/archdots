@@ -41,12 +41,13 @@
 
     // Modules Center
     "modules-center": [
-        "hyprland/workspaces"
+        "hyprland/workspaces",
+        "custom/screenrecord"
     ],
 
     // Modules Right
     "modules-right": [
-        "custom/screenrecord",
+        "custom/music", 
         "custom/updates",
         "pulseaudio",
         "network",
