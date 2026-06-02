@@ -54,13 +54,14 @@
     },
 
     "modules-left": [
+        "custom/arch-menu",
         "hyprland/workspaces",
-        "custom/updates",
-        "custom/screenrecord"
+        "custom/updates"
     ],
 
     "modules-center": [
-        "custom/music"
+        "group/media",
+        "custom/screenrecord"
     ],
 
     "modules-right": [
@@ -71,6 +72,6 @@
         "bluetooth",
         "cpu",
         "battery",
-        "custom/hypridle",
+        "custom/hypridle"
     ]
 }

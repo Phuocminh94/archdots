@@ -1,0 +1,9 @@
+#!/bin/bash
+
+CURRENT_LANG=$(fcitx5-remote -n)
+
+if [[ "$CURRENT_LANG" == *"bamboo"* || "$CURRENT_LANG" == *"unikey"* ]]; then
+    echo "{\"text\": \"V\", \"class\": \"vietnamese\"}"
+else
+    echo "{\"text\": \"E\", \"class\": \"english\"}"
+fi

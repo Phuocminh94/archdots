@@ -34,12 +34,31 @@
     "exec": "hypridle-toggle status",
     "on-click": "hypridle-toggle toggle"
   },
-  "custom/music": {
+  "group/media": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/media-animation",
+      "custom/media-now-playing",
+      "custom/media-time"
+    ]
+  },
+  "custom/media-animation": {
+    "exec": "waybar-now-playing-animation",
+    "tooltip": false
+  },
+  "custom/media-now-playing": {
     "exec": "waybar-now-playing",
-    "interval": 2,
-    "format": "{text}",
-    "return-type": "json",
-    "tooltip": "{tooltip}"
+    "escape": true,
+    "tooltip": false,
+    "on-click": "playerctl play-pause",
+    "on-click-middle": "playerctl previous",
+    "on-click-right": "playerctl next"
+  },
+  "custom/media-time": {
+    "exec": "waybar-now-playing-time",
+    "escape": true,
+    "interval": 1,
+    "tooltip": false
   },
   "clock": {
     "format": "{:%A %H:%M}",
@@ -148,5 +167,16 @@
     "signal": 8,
     "interval": 1,
     "on-click": "screenrecord output"
+  },
+  "custom/arch-menu": {
+    "format": "󰣇", 
+    "tooltip": false,
+    "on-click": "walker -t menus -m menus:system -N"
+  },
+  "custom/typing": {
+    "exec": "waybar-typing",
+    "interval": 1,
+    "return-type": "json", 
+    "tooltip": false
   }
 }

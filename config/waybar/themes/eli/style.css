@@ -133,3 +133,44 @@ tooltip {
 #custom-hypridle.notactive {
     color: rgb(224, 137, 137);
 }
+
+#custom-media-animation {
+  font-size: 13px;
+  margin-left: 15px;
+  color: @foreground;
+}
+
+#custom-media-now-playing {
+    margin-right: 7px;
+    margin-left: 10px;
+    color: @foreground;
+    padding: 0 5px;
+    border-radius: 5px;
+}
+
+#custom-media-time {
+  color: @foreground;
+  font-size: 14;
+}
+
+#custom-arch-menu {
+    font-size: 20px; 
+    color: @foreground;
+    padding-left: 10px;
+    margin-right: 5px;
+}
+
+#custom-arch-menu:hover {
+    color: #1793D1;  
+    transition: all 0.2s ease;
+}
+
+#custom-typing {
+    padding: 0px 7px;             
+    border-radius: 4px;          
+    margin: 0px .5em 0px .5em; 
+    font-weight: bold;           
+    font-size: .8em;
+    color: @background;
+    background: @foreground;
+}

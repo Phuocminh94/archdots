@@ -102,6 +102,13 @@ otf-font-awesome
 ttf-cascadia-mono-nerd
 yaru-icon-theme
 
+# Typing
+fcitx5
+fcitx5-configtool
+fcitx5-bamboo
+fcitx5-gtk
+fcitx5-qt
+
 # Applications
 localsend-bin
 mpv
@@ -120,3 +127,6 @@ elephant-todo
 # Desktop Portals
 xdg-desktop-portal-gtk
 xdg-utils
+
+# Waybar Now Playing
+zscroll

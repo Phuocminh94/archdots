@@ -35,25 +35,27 @@
 
     // Modules Left
     "modules-left": [
+        "custom/arch-menu",
         "clock",
-        "group/expand",
+        "group/expand"
     ],
 
     // Modules Center
     "modules-center": [
         "hyprland/workspaces",
-        "custom/screenrecord"
+        "custom/screenrecord",
+        "custom/group-media"
     ],
 
     // Modules Right
     "modules-right": [
-        "custom/music", 
+        "custom/typing",
         "custom/updates",
         "pulseaudio",
         "network",
         "bluetooth",
         "cpu",
         "battery",
-        "custom/hypridle",
+        "custom/hypridle"
     ]
 }
