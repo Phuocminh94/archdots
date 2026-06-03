@@ -2,20 +2,12 @@
 
 [![Arch Linux](https://img.shields.io/badge/Arch-Linux-1793D1?logo=arch-linux&logoColor=white)](https://archlinux.org/)
 
-Dotfiles setup with static and dynamic themes and plenty of useful scripts.
+Dotfiles setup with static and plenty of useful scripts.
 
 <table>
   <tr>
     <td><img src="demo/1.png" width="400"/></td>
-    <td><img src="demo/8.png" width="400"/></td>
-  </tr>
-  <tr>
-    <td><img src="demo/4.png" width="400"/></td>
     <td><img src="demo/2.png" width="400"/></td>
-  </tr>
-  <tr>
-    <td><img src="demo/6.png" width="400"/></td>
-    <td><img src="demo/3.png" width="400"/></td>
   </tr>
 </table>
 
@@ -27,9 +19,9 @@ Quick info:
 - [setup-applications](install/setup-applications) - hides some annoying applications from launcher
 - [setup-by-hardware](install/setup-by-hardware) - sets up monitors, keybindings, hypr enviroments
 - [setup-config](install/setup-config) - copies full config into ~/.config
-- [setup-lazyvim](install/setup-lazyvim) - lazyvim setup
+- [setup-mvim](install/setup-mvim) - mvim setup
 - [setup-nvidia](install/setup-nvidia) - nvidia specific setup
-- [setup-system](install/setup-system) - ufw, pacman.conf, triggers nvidia-setup if on nvidia gpu, git, ly login manager (if exists), enables gcr agent for ssh, disables systemd-networkd-wait-online.service that causes extremly long boot time
+- [setup-system](install/setup-system) - ufw, pacman.conf, triggers nvidia-setup if on nvidia gpu, git, sddm login manager (if exists), enables gcr agent for ssh, disables systemd-networkd-wait-online.service that causes extremly long boot time
 - [setup-theme](install/setup-theme) - theming setup and symlinks
 - [setup-zsh](install/setup-zsh) - full zsh config with oh-my-zsh, plugins, nice features
 
@@ -39,21 +31,17 @@ Quick info:
 - [Installation](#installation)
   - [Automatic installer](#automatic-installer)
   - [Manual installation](#manual-installation)
-- [Screenshots & Videos](#screenshots--videos)
 - [Keybinds](#keybinds)
-- [Theming & Customization](#theming--customization)
-  - [Changing Themes](#changing-themes)
-  - [Customizing Configs](#customizing-configs)
 - [Credits](#credits)
 
 ---
 
 ## Features
 
-- **Dynamic Theming System** - Switch between static themes or use dynamic theming with Matugen and Pywal
+- **Static Theming System** - Switch between static themes 
 - **Utility Scripts** - Interactive package management; theming; setup of Postgres & database backup and restoration, Docker, Node.js; video download (with yt-dlp), video and image transcoding (using handbrakecli and imagemagick), interactive backups with fzf
 - **Modular ZSH Config** - Zsh setup with some nice custom functions like `cp2c` (copy file content to clipboard - c2pc <file_path>) and `c2f` (clipboard content to file c2f <file_path>)
-- **Application Configs** - Configs for Ghostty, Waybar, Walker, Elephant, lazyvim and more
+- **Application Configs** - Configs for Ghostty, Waybar, Walker, Elephant, Mvim and more
 
 ---
 
@@ -62,7 +50,7 @@ Quick info:
 ### Automatic installer
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Maciejonos/dotfiles/master/setup.sh | bash
+curl -fsSL https://raw.githubusercontent.com/Phuocminh94/archdots/master/setup.sh | bash
 ```
 
 **⚠️ Important Notes:**
@@ -79,8 +67,8 @@ curl -fsSL https://raw.githubusercontent.com/Maciejonos/dotfiles/master/setup.sh
 - Backs up everything that will be changed ([backup script](install/lib/backup.sh))
   - Files in `~/.config`
   - `pacman.conf`
-  - Ly display manager configuration (if installed)
-  - ZSH and LazyVim configs
+  - Sddm display manager configuration (if installed)
+  - Zsh and Mvim configs
   - Everything else that gets modified
 - Creates a backup folder in your Home directory with:
   - A text file listing all changed files
@@ -111,7 +99,7 @@ The installer [detects your hardware](install/setup-by-hardware):
 <summary><b>Configuration & Theming</b></summary>
 
 - Replaces configuration files in `~/.config` with the [config](config) directory contents
-- Sets up static and dynamic themes via [theme setup](install/setup-theme)
+- Sets up static via [theme setup](install/setup-theme)
 - Configures symlinks for theme management
 - Some files live in the [default](default) directory - these are git synced and will get overwritten with updates
 
@@ -154,65 +142,18 @@ You can manually use the dotfiles without the installer:
 
 ---
 
-## Screenshots & videos
-
-### Waybar themes
-
-Omarchy waybar
-![Waybar1](demo/waybar-omarchy.png)
-Eli dotfiles waybar
-![Waybar2](demo/waybar-eli.png)
-Modern waybar config
-![Waybar3](demo/waybar-modern.png)
-
-### Lazyvim
-
-![Lazyvim](demo/lazyvim.png)
-
-### Menu overview
-<https://github.com/user-attachments/assets/9b9cb437-a3e4-4cd7-90f1-80175036e196>
-
-### Dynamic Theming
-<https://github.com/user-attachments/assets/044216d5-44a6-4b56-99d0-a820ceef3a68>
-
-### Application Launcher - Walker
-
-![Walker](demo/walker.png)
-
-### Desktop Overview
-
-<table>
-  <tr>
-    <td><img src="demo/1.png" width="400"/></td>
-    <td><img src="demo/6.png" width="400"/></td>
-  </tr>
-  <tr>
-    <td><img src="demo/4.png" width="400"/></td>
-    <td><img src="demo/2.png" width="400"/></td>
-  </tr>
-  <tr>
-    <td><img src="demo/7.png" width="400"/></td>
-    <td><img src="demo/3.png" width="400"/></td>
-  </tr>
-</table>
-
----
-
 ## Keybinds
 
 Just press SUPER + ALT + Space -> keybindings - all bindings nicely sorted here
 
 Most important ones:
 
-- SUPER + Q = Open Terminal
-- SUPER + W = Close window
+- SUPER + T = Open Terminal
+- SUPER + Q = Close window
 - SUPER + R = Open Walker
 - SUPER + E = File manager
-- SUPER + V = Clipboard
+- SUPER + SHIFT + V = Clipboard
 - SUPER + ALT + Space = Menu
-- SUPER + CTRL + W = Open Waypaper (to trigger dynamic color update - theme must be set to Matugen or Pywal)
-
-Walker bindings - `ctrl + x` to go back from submenu
 
 ---
 
@@ -222,7 +163,7 @@ Walker bindings - `ctrl + x` to go back from submenu
 
 The setup includes both static and dynamic theming:
 
-- Open walker and select a theme you like, you can pick between static ones or Matugen/Pywal
+- Open walker and select a theme you like, you can pick between static ones
 - Also, you can pick 3 different waybar themes and 2 fastfetch presets
 
 ### Customizing Configs
@@ -234,6 +175,4 @@ The setup includes both static and dynamic theming:
 
 ## Credits
 
-- <https://github.com/basecamp/omarchy>
-- <https://github.com/mylinuxforwork/dotfiles>
-- <https://github.com/elifouts/Dotfiles>
+- <https://github.com/mkbula/dotfiles>
