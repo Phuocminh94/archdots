@@ -35,17 +35,20 @@
     },
     // Modules Left
     "modules-left": [
+        "custom/arch-menu",
         "hyprland/workspaces",
         "custom/filemanager"
     ],
 
     // Modules Center
     "modules-center": [
-        "clock"
+        "clock",
+        "custom/screenrecord"
     ],
 
     // Modules Right
     "modules-right": [
+        "custom/typing",
         "custom/updates",
         "pulseaudio",
         "bluetooth",

@@ -43,8 +43,8 @@
     // Modules Center
     "modules-center": [
         "hyprland/workspaces",
-        "custom/screenrecord",
-        "custom/group-media"
+        "group/media",
+        "custom/screenrecord"
     ],
 
     // Modules Right

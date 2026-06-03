@@ -7,17 +7,23 @@ source "$SCRIPT_DIR/lib/helpers.sh"
 DOTFILES_DIR="$HOME/.local/share/dotfiles"
 
 # Set initial theme
-log_info "Setting up initial theme (everforest)..."
+log_info "Setting up initial theme (osaka-jade)..."
 mkdir -p "$DOTFILES_DIR/current"
-ln -snf "$DOTFILES_DIR/themes/everforest" "$DOTFILES_DIR/current/theme"
-ln -snf "$DOTFILES_DIR/current/theme/backgrounds/1-everforest.jpg" "$DOTFILES_DIR/current/background"
+ln -snf "$DOTFILES_DIR/themes/osaka-jade" "$DOTFILES_DIR/current/theme"
+
+rm -f "$DOTFILES_DIR/current/background"
+ln -snf "$DOTFILES_DIR/current/theme/backgrounds/1-osaka-jade-bg.jpg" "$DOTFILES_DIR/current/background"
 
 # Set up SDDM
 log_info "Setting up sddm ..."
-SDDM_THEME_SRC="$DOTFILES_DIR/sddm/themes/mbp"
+SDDM_THEME_SRC="$DOTFILES_DIR/default/sddm/themes/mbp"
 SDDM_THEME_DEST="/usr/share/sddm/themes/"
 
 if command -v sddm &>/dev/null; then
+  if [ -d "${SDDM_THEME_DEST}mbp" ]; then
+    sudo rm -rf "${SDDM_THEME_DEST}mbp"
+  fi
+
   sudo cp -r "$SDDM_THEME_SRC" "$SDDM_THEME_DEST"
   sudo chown -R $USER:$USER "${SDDM_THEME_DEST}mbp"
 fi
@@ -35,13 +41,22 @@ ln -snf "$DOTFILES_DIR/config/fastfetch/configs/config-default.jsonc" "$HOME/.co
 
 log_info "Setting up wallpapers symlink..."
 mkdir -p "$HOME/Pictures"
+
+# If old backup dir exists => remove to avoid `mv` creating duplicated dir
+if [ -e "$HOME/Pictures/dotfiles-wallpapers-backup" ] || [ -L "$HOME/Pictures/dotfiles-wallpapers-backup" ]; then
+  rm -rf "$HOME/Pictures/dotfiles-wallpapers-backup"
+fi
+
+# If there exists symlink or old dir => turn it to backup
 if [ -L "$HOME/Pictures/dotfiles-wallpapers" ] || [ -d "$HOME/Pictures/dotfiles-wallpapers" ]; then
   mv "$HOME/Pictures/dotfiles-wallpapers" "$HOME/Pictures/dotfiles-wallpapers-backup"
 fi
-ln -sf "$DOTFILES_DIR/backgrounds" "$HOME/Pictures/dotfiles-wallpapers"
+
+# Good practice to add -n (--no-dereference) when working with directory
+ln -snf "$DOTFILES_DIR/backgrounds" "$HOME/Pictures/dotfiles-wallpapers"
 log_detail "Wallpapers symlinked to ~/Pictures/dotfiles-wallpapers"
 
 gsettings set org.gnome.desktop.interface icon-theme "Yaru-sage"
 gsettings set org.gnome.desktop.interface monospace-font-name 'CaskaydiaMono Nerd Font Mono 11'
 
-log_success "Initial theme set (everforest)"
+log_success "Initial theme set (osaka-jade)"
