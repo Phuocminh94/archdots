@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Youtube
+Comment=Youtube
+Exec=/home/mbp/.local/share/dotfiles/bin/launch-webapp "https://youtube.com/"
+Terminal=false
+Type=Application
+Icon=/home/mbp/.local/share/applications/icons/youtube.png
+StartupNotify=true

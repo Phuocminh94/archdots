@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# (First ghostty, then try alacritty if any error)
+if command -v ghostty >/dev/null 2>&1; then
+    TERM_BIN="ghostty"
+else
+    TERM_BIN="alacritty"
+fi
+
+# ghostty != alacritty
+# ghostty:  ghostty --class=xyz -e command
+# alacritty: alacritty --class xyz -e command
+
+ARGS=()
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --class)
+            if [ "$TERM_BIN" = "ghostty" ]; then
+                ARGS+=("--class=$2") # ghostty: '='
+            else
+                ARGS+=("--class" "$2") # alacritty: 'space' 
+            fi
+            shift 2
+            ;;
+        *)
+            ARGS+=("$1")
+            shift
+            ;;
+    esac
+done
+
+exec "$TERM_BIN" "${ARGS[@]}"

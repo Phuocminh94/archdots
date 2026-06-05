@@ -11,21 +11,21 @@ function GetEntries()
 			Text = "Setup postgres",
 			Icon = "",
 			Actions = {
-				["postgres-setup"] = "ghostty --class=local.floating -e postgres-setup",
+				["postgres-setup"] = "myterm --class local.floating -e postgres-setup",
 			},
 		},
 		{
 			Text = "Restore database",
 			Icon = "",
 			Actions = {
-				["postgres-restore-db"] = "ghostty --class=local.floating -e postgres-restore-db",
+				["postgres-restore-db"] = "myterm --class local.floating -e postgres-restore-db",
 			},
 		},
 		{
 			Text = "Backup database",
 			Icon = "",
 			Actions = {
-				["postgres-backup"] = "ghostty --class=local.floating -e postgres-backup",
+				["postgres-backup"] = "myterm --class local.floating -e postgres-backup",
 			},
 		},
 	}

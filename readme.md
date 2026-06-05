@@ -4,8 +4,7 @@
 
 Dotfiles setup with static and plenty of useful scripts.
 
-<img src="demo/1.png" width="400"/>
-
+<img src="demo/1.png" width="800"/>
 Quick info:
 
 - [bin](bin) - all scripts live here, it is added to path in uwsm config

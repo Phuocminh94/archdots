@@ -23,7 +23,7 @@
     "interval": 1800,
     "signal": 1,
     "hide-empty-text": true,
-    "on-click": "ghostty --class=local.floating -e update-perform"
+    "on-click": "myterm --class local.floating -e update-perform"
   },
   "custom/hypridle": {
     "format": "",
@@ -68,12 +68,12 @@
   "cpu": {
     "interval": 5,
     "format": "",
-    "on-click": "ghostty -e btop"
+    "on-click": "myterm -e btop"
   },
   "pulseaudio": {
     "scroll-step": 1,
     "format": "{icon}",
-    "on-click": "ghostty --class=local.wiremix -e wiremix",
+    "on-click": "myterm --class local.wiremix -e wiremix",
     "on-click-right": "pamixer -t",
     "tooltip-format": "Playing at {volume}%",
     "format-muted": "",
@@ -102,7 +102,7 @@
     "tooltip-format-disconnected": "Disconnected",
     "interval": 3,
     "spacing": 1,
-    "on-click": "ghostty --class=local.floating -e $HOME/.cargo/bin/impala-nm"
+    "on-click": "myterm --class local.floating -e $HOME/.cargo/bin/impala-nm"
   },
   "battery": {
     "format": "{capacity}% {icon}",
@@ -150,7 +150,7 @@
     "format-disabled": "󰂲",
     "format-connected": "",
     "tooltip-format": "Devices connected: {num_connections}",
-    "on-click": "ghostty --class=local.bluetui -e bluetui"
+    "on-click": "myterm --class local.bluetui -e bluetui"
   },
   "custom/brightness": {
     "format": "",
@@ -177,6 +177,7 @@
     "exec": "waybar-typing",
     "interval": 1,
     "return-type": "json", 
-    "tooltip": false
+    "tooltip": false,
+    "on-click": "sh -c 'fcitx5-remote -t'"
   }
 }

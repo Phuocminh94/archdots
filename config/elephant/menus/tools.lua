@@ -25,7 +25,7 @@ function GetEntries()
 			Text = "Download video",
 			Icon = "",
 			Actions = {
-				["download-video"] = "ghostty --class=local.floating -e media-download",
+				["download-video"] = "myterm --class local.floating -e media-download",
 			},
 		},
 		{
@@ -39,7 +39,7 @@ function GetEntries()
 			Text = "ISO to usb",
 			Icon = "",
 			Actions = {
-				["write-iso"] = "ghostty --class=local.floating -e write-iso",
+				["write-iso"] = "myterm --class local.floating -e write-iso",
 			},
 		},
 		{
@@ -53,7 +53,7 @@ function GetEntries()
 			Text = "Add a webapp",
 			Icon = "",
 			Actions = {
-				["webapp-install"] = "ghostty --class=local.floating -e webapp-install",
+				["webapp-install"] = "myterm --class local.floating -e webapp-install",
 			},
 		},
 	}

@@ -10,21 +10,21 @@ function GetEntries()
 			Text = "Update",
 			Icon = "",
 			Actions = {
-				["update"] = "ghostty --class=local.floating -e update-perform",
+				["update"] = "myterm --class local.floating -e update-perform",
 			},
 		},
 		{
 			Text = "Install package",
 			Icon = "󰣇",
 			Actions = {
-				["manage-pkg"] = "ghostty --class=local.floating -e pkg-install",
+				["manage-pkg"] = "myterm --class local.floating -e pkg-install",
 			},
 		},
 		{
 			Text = "Remove package",
 			Icon = "󰭌",
 			Actions = {
-				["manage-pkg"] = "ghostty --class=local.floating -e pkg-remove",
+				["manage-pkg"] = "myterm --class local.floating -e pkg-remove",
 			},
 		},
 		{

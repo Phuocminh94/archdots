@@ -44,7 +44,7 @@
     "pulseaudio": {
         "scroll-step": 1,
         "format": "{icon} {volume}%",
-        "on-click": "ghostty --class=local.wiremix -e wiremix",
+        "on-click": "myterm --class local.wiremix -e wiremix",
         "on-click-right": "pamixer -t",
         "tooltip-format": "Playing at {volume}%",
         "format-muted": "",

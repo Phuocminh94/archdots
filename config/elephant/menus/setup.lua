@@ -11,7 +11,7 @@ function GetEntries()
 			Text = "Fingerprint",
 			Icon = "",
 			Actions = {
-				["fingerprint"] = "ghostty --class=local.floating -e fingerprint-setup",
+				["fingerprint"] = "myterm --class local.floating -e fingerprint-setup",
 			},
 		},
 		{
@@ -25,14 +25,14 @@ function GetEntries()
 			Text = "Docker",
 			Icon = "",
 			Actions = {
-				["docker"] = "ghostty --class=local.floating -e docker-setup",
+				["docker"] = "myterm --class local.floating -e docker-setup",
 			},
 		},
 		{
 			Text = "Node.js",
 			Icon = "",
 			Actions = {
-				["nodejs"] = "ghostty --class=local.floating -e nodejs-setup",
+				["nodejs"] = "myterm --class local.floating -e nodejs-setup",
 			},
 		},
 	}

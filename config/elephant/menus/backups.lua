@@ -11,14 +11,14 @@ function GetEntries()
 			Text = "Archive files",
 			Icon = "",
 			Actions = {
-				["backup-files"] = "ghostty --class=local.floating -e backup-files",
+				["backup-files"] = "myterm --class local.floating -e backup-files",
 			},
 		},
 		{
 			Text = "Unpack archive",
 			Icon = "",
 			Actions = {
-				["backup-restore"] = "ghostty --class=local.floating -e backup-restore",
+				["backup-restore"] = "myterm --class local.floating -e backup-restore",
 			},
 		},
 	}

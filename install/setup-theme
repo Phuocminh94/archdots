@@ -26,6 +26,12 @@ if command -v sddm &>/dev/null; then
 
   sudo cp -r "$SDDM_THEME_SRC" "$SDDM_THEME_DEST"
   sudo chown -R $USER:$USER "${SDDM_THEME_DEST}mbp"
+
+  # Set Current=mbp
+  if [ -f "/etc/sddm.conf" ]; then
+    log_info "Updating theme to 'mbp' inside /etc/sddm.conf..."
+    sudo sed -i '/^\[Theme\]/,/^\[/ s/^Current=.*/Current=mbp/' /etc/sddm.conf
+  fi
 fi
 
 mkdir -p "$HOME/.config/nvim/lua/plugins"

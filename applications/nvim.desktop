@@ -2,7 +2,7 @@
 Type=Application
 Name=Neovim
 Comment=Vim-fork focused on extensibility and usability
-Exec=ghostty -e nvim %F
+Exec=myterm -e nvim %F
 Icon=nvim
 Terminal=false
 Categories=Utility;TextEditor;Development;

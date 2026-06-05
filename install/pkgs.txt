@@ -14,6 +14,8 @@ fastfetch
 fd
 fzf
 ghostty
+kitty
+alacritty
 jq
 pv
 ripgrep
