@@ -3,37 +3,40 @@ command_timeout = 5000
 
 # Prompt format: Line 1 for info, Line 2 for input
 format = """
-$username$hostname$directory$git_branch$git_status$conda$python$rlang$docker_context$time
+$username$hostname$directory$git_branch$git_status$conda$python$rlang$docker_context$cmd_duration$time
 [ ╰─ ](bold green)$os$character"""
 
 ## --- Info & Status ---
 [username]
-format = " [╭╴](bold green)[$user]($style) in "
-style_user = "bold green"
+format = " [╭╴](bold green)[$user](purple) "
+style_user = "bold white"
 style_root = "bold red"
 show_always = true
 
 [hostname]
-format = "[$hostname]($style) in "
-style = "bold red"
-trim_at = "-"
-ssh_only = false
-disabled = true # Keep true for single-machine use
+disabled = true 
 
 [directory]
-style = "bold green"
+style = "bold cyan" 
 truncation_length = 3
 truncate_to_repo = true
 truncation_symbol = "…/"
 
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Developer" = "󰲋 "
+
 ## --- Git ---
 [git_branch]
 symbol = " "
-style = "green italic bold"
+style = "bold dimmed-white" 
 format = "on [$symbol$branch]($style) "
 
 [git_status]
-format = '[\($all_status$ahead_behind\)](bold italic green) '
+format = '[\($all_status$ahead_behind\)](bold green) '
 conflicted = "󰞇 "
 up_to_date = " "
 untracked = " "
@@ -42,57 +45,46 @@ diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 behind = "⇣${count}"
 stashed = "󰏗 "
 modified = " "
-staged = '[+$count](green)'
+staged = '+$count'
 renamed = "󰖷 "
 deleted = " "
 
 ## --- Command Duration & Time ---
 [cmd_duration]
-min_time = 1000 # Show only if execution takes > 1s
-format = "took [$duration](bold yellow) "
+min_time = 1000 
+format = "took [$duration](dimmed white) "
 disabled = false
 
 [time]
 disabled = false
 format = "at [$time]($style) "
-style = "dimmed green"
+style = "dimmed white"
 time_format = "%H:%M"
 
 ## --- Languages & Tools ---
 [conda]
 symbol = " "
-format = "[$symbol$environment](green) "
+format = "[$symbol$environment](dimmed white) "
 ignore_base = false
 
 [python]
 symbol = " "
 format = "via [$symbol$virtualenv]($style) "
-style = "bold green"
-
-[rlang]
-symbol = " "
-format = "via [$symbol$version]($style) "
-
-[docker_context]
-symbol = "🐳 "
-format = "via [$symbol$context]($style) "
-style = "green italic bold"
+style = "dimmed white"
 
 ## --- OS Detection ---
 [os]
 disabled = false
-format = "[$symbol ](bold green)"
+format = "[$symbol ](bold white)"
 
 [os.symbols]
-Windows = ""   
-Arch = ""      
-Macos = ""     
+Windows = "[](bold purple)"   
+Arch = "[](bold purple)"
+Macos = "[](bold purple)"     
 
 ## --- Prompt Character ---
 [character]
-# Success: Green arrow
 success_symbol = "(bold green)"
-# Error: Red arrow on command failure
 error_symbol = "(bold red)"  
 
 [status]

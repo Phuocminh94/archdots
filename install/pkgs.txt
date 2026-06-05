@@ -48,7 +48,6 @@ xdg-desktop-portal-hyprland
 # Wayland UI & Utilities
 gjs
 grim
-impala
 mako
 imagemagick
 matugen

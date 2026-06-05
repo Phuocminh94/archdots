@@ -161,6 +161,19 @@ echo
 log_info "Please reboot for all changes to take effect"
 echo
 
+# Instruction for impala-nm installation
+clear
+log_header "Optional Network Tool Installation"
+log_info "To use the Network Wi-Fi applet on Waybar (on-click action),"
+log_info "you need to install 'impala-nm' via Rust's Cargo ecosystem."
+echo
+log_detail "Please run these commands manually after rebooting:"
+echo "  1. sudo pacman -S --needed cargo-binstall rust"
+echo "  2. cargo binstall impala-nm"
+echo
+log_info "Press Enter to continue to the final screen..."
+read -r
+
 gum confirm \
   --prompt.foreground=2 \
   --selected.foreground=15 \
