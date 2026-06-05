@@ -4,12 +4,7 @@
 
 Dotfiles setup with static and plenty of useful scripts.
 
-<table>
-  <tr>
-    <td><img src="demo/1.png" width="400"/></td>
-    <td><img src="demo/2.png" width="400"/></td>
-  </tr>
-</table>
+<img src="demo/1.png" width="400"/>
 
 Quick info:
 
