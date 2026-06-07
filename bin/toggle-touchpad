@@ -1,0 +1,21 @@
+#!/bin/bash
+
+DEVICE=$(hyprctl devices -j | jq -r '.mice[] | .name' | grep -i "touchpad" | head -n 1)
+STATE_FILE="/tmp/touchpad_status"
+
+# If temp file not exist, STATUS=1 
+if [ ! -f "$STATE_FILE" ]; then
+    echo "1" > "$STATE_FILE"
+fi
+
+STATUS=$(cat "$STATE_FILE")
+
+if [ "$STATUS" = "1" ]; then
+    hyprctl keyword device["$DEVICE"]:enabled false
+    echo "0" > "$STATE_FILE"
+    notify-send "Touchpad" "Disabled"
+else
+    hyprctl keyword device["$DEVICE"]:enabled true
+    echo "1" > "$STATE_FILE"
+    notify-send "Touchpad" "Enabled"
+fi
