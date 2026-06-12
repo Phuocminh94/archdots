@@ -2,14 +2,17 @@
 
 # (First ghostty, then try alacritty if any error)
 if command -v ghostty >/dev/null 2>&1; then
-	GHOSTTY_ERR=$(timeout 0.2 ghostty -e exit 2>&1)
-	if echo "$GHOSTTY_ERR" | grep -Ei "failed|error|vulkan|opengl|gl|wgpu|panic" >/dev/null 2>&1;then
-		TERM_BIN="alacritty"
-	else
-		TERM_BIN="ghostty"
-	fi
+    GHOSTTY_ERR=$(timeout 0.8 ghostty -e true 2>&1)
+    
+    if echo "$GHOSTTY_ERR" | grep -Ei "failed to start|panic|wgpu error" >/dev/null 2>&1; then
+        TERM_BIN="alacritty"
+    elif echo "$GHOSTTY_ERR" | grep -Ei "requested executable not found" >/dev/null 2>&1; then
+        TERM_BIN="alacritty"
+    else
+        TERM_BIN="ghostty"
+    fi
 else
-	TERM_BIN="alacritty"
+    TERM_BIN="alacritty"
 fi
 
 # ghostty != alacritty
